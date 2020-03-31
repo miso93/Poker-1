@@ -1,4 +1,9 @@
-var socket = io.connect();
+var socket = io.connect({
+  reconnection: true,
+  reconnectionDelay: 1000,
+  reconnectionDelayMax : 5000,
+  reconnectionAttempts: 99999
+});
 
 var app = angular.module( 'app', ['ngRoute'] ).config( function( $routeProvider, $locationProvider ) {
 	$routeProvider.when('/table-10/:tableId', {
